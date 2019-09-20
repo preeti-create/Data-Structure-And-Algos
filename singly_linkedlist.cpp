@@ -92,7 +92,7 @@ class linked_list
     }
 };
 int main() {
-	int n,i;                       //'n' to number of nodes jo apko banane h and 'i' is data in the node 
+	int n,i;                     
 	cin>>n;
 	linked_list a;
 	while(n!=0)
@@ -101,7 +101,7 @@ int main() {
 	    a.add_node_end(i);
 	    n--;
 	}
-	int strt,no;                 // 'no' is number of ele to be inserted in the start and 'strt' is element to be inserted
+	int strt,no;                 
 	cin>>no;
 	while(no!=0)
 	{
