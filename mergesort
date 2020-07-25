@@ -55,17 +55,5 @@ void mergeSort(int input[], int size){
      mergeSort( input, 0,size-1);
 }
 
-/*
-void mergesort(int input[],int si,int ei)
-{
-    int mid=(si+ei)/2;
-    if(si>=ei)
-        return;
-    mergesort(input,si,mid);
-    mergesort(input,mid+1,ei);
-    merge(input,si,ei);
-}
-void mergeSort(int input[], int size){
-	// Write your code here
-        mergesort(input,0,size-1);
-}
+
+
