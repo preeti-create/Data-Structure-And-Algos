@@ -1,0 +1,31 @@
+#include<cmath>
+void subset(int input[], int size, int output[],int len2,int index )
+{
+   //int t=pow(2,size);
+    
+  if(index>=size)
+  {
+    for(int i=0;i<len2;i++)
+    {
+        cout<<output[i]<<" ";
+    }
+      cout<<endl;
+     return;
+  }
+    subset(input,size,output,len2,index+1);
+    
+    output[len2]=input[index];
+    
+    subset(input,size,output,len2+1,index+1);
+    
+ 
+
+    
+}
+
+void printSubsetsOfArray(int input[], int size) {
+	// Write your code here
+    int output[size]={0};
+    subset(input,size,output,0,0);
+    
+}
