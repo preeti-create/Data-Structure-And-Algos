@@ -28,7 +28,7 @@ void subsetSumToKHelper(int input[], int size, int output[], int oSize, int k)
         }
         return;
     }
-    int smallOutput2[1000], smallSize1 = 0, smallSize2 = 0;
+    int smallOutput2[1000];
     subsetSumToKHelper(input+1, size-1, output, oSize, k);
     if(k > 0) {
         int i;
