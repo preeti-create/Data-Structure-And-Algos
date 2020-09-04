@@ -1,0 +1,216 @@
+
+/*************
+ Driver program to test below functions
+ 
+int main()
+{
+    int count1,count2,choice;
+    cin >> count1;
+    
+    int *degree1 = new int[count1];
+    int *coeff1 = new int[count1];
+    
+    for(int i=0;i < count1; i++) {
+        cin >> degree1[i];
+    }
+    
+    for(int i=0;i < count1; i++) {
+        cin >> coeff1[i];
+    }
+    
+    Polynomial first;
+    for(int i = 0; i < count1; i++){
+        first.setCoefficient(degree1[i],coeff1[i]);
+    }
+    
+    cin >> count2;
+    
+    int *degree2 = new int[count2];
+    int *coeff2 = new int[count2];
+    
+    for(int i=0;i < count2; i++) {
+        cin >> degree2[i];
+    }
+    
+    for(int i=0;i < count2; i++) {
+        cin >> coeff2[i];
+    }
+    
+    Polynomial second;
+    for(int i = 0; i < count2; i++){
+        second.setCoefficient(degree2[i],coeff2[i]);
+    }
+    
+    cin >> choice;
+    
+    Polynomial result;
+    switch(choice){
+            // Add
+        case 1:
+            result = first + second;
+            result.print();
+            break;
+            // Subtract
+        case 2 :
+            result = first - second;
+            result.print();
+            break;
+            // Multiply
+        case 3 :
+            result = first * second;
+            result.print();
+            break;
+            
+        case 4 : // Copy constructor
+        {
+            Polynomial third(first);
+            if(third.degCoeff == first.degCoeff) {
+                cout << "false" << endl;
+            }
+            else {
+                cout << "true" << endl;
+            }
+            break;
+        }
+            
+        case 5 : // Copy assignment operator
+        {
+            Polynomial fourth(first);
+            if(fourth.degCoeff == first.degCoeff) {
+                cout << "false" << endl;
+            }
+            else {
+                cout << "true" << endl;
+            }
+            break;
+        }
+            
+    }
+    
+    return 0;
+}
+****************/
+
+class Polynomial {
+   public:
+    int *degCoeff;
+     // Name of your array (Don't change this)
+    int size;
+    // Complete the class
+    Polynomial()
+    {
+        size=10;
+        degCoeff=new int[size];
+        for(int i=0;i<size;i++)
+            degCoeff[i]=0;
+    }
+    
+    Polynomial operator+(Polynomial const & ob)
+    {
+        Polynomial o;
+        int s=min(size,ob.size);
+        int i;
+        for(i=0;i<s;i++)
+        {
+            int sum=degCoeff[i]+ob.degCoeff[i];
+            o.setCoefficient(i,sum);
+        }
+        if(size>ob.size)
+        {
+            for(;i<size;i++)
+            o.setCoefficient(i,degCoeff[i]);
+        }
+        else
+        {
+            for(;i<ob.size;i++)
+                o.setCoefficient(i,ob.degCoeff[i]);
+        }
+        
+        return o;
+    }
+    Polynomial operator-(Polynomial const & ob)
+    {
+        Polynomial o;
+        int s=min(this->size,ob.size);
+        int i;
+        for(i=0;i<s;i++)
+        {
+            int minus=this->degCoeff[i]-ob.degCoeff[i];
+            o.setCoefficient(i,minus);
+        }
+       if(size>ob.size)
+        for(;i<size;i++)
+            o.setCoefficient(i,degCoeff[i]);
+        else
+            for(;i<ob.size;i++)
+                o.setCoefficient(i,-1*ob.degCoeff[i]);
+        
+        
+        return o;
+    }
+    void setCoefficient(int degree,int coeff)
+    {
+        if(degree>=size)
+        {
+            int len=size;
+            while(degree>=size)
+            size*=2;
+            int *newarr=new int[size];
+            for(int i=0;i<size;i++)
+                newarr[i]=0;
+            for(int i=0;i<len;i++)
+                newarr[i]=degCoeff[i];
+            
+            delete [] degCoeff;
+            degCoeff=newarr;
+
+        }
+        
+       degCoeff[degree]+=coeff; 
+        
+    }
+    
+    Polynomial operator*(Polynomial const & ob)
+    {
+        Polynomial o; 
+        int p=size,q=ob.size,i,j;
+        for(i=0;i<p;i++)
+        {
+            if(degCoeff[i]==0)
+                continue;
+            for(j=0;j<q;j++)
+            {
+                if(ob.degCoeff[j]==0)
+                    continue;
+                
+               int mul=degCoeff[i]*ob.degCoeff[j];
+                o.setCoefficient((i+j),mul);
+                
+            }
+            
+        }
+        return o;
+    }
+    Polynomial(Polynomial const & o)
+    {
+        size=o.size;
+        degCoeff=new int[size];
+        int i;
+        for(i=0;i<size;i++)
+            degCoeff[i]=o.degCoeff[i];
+        
+    }
+  
+    void print()
+    {
+        int i;
+        for(i=0;i<size;i++)
+        {
+            if(degCoeff[i]==0)
+                continue;
+            
+            cout<<degCoeff[i]<<"x"<<i<<" ";
+        }
+    }
+    
+};
