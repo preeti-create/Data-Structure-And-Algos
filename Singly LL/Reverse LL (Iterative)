@@ -1,0 +1,33 @@
+
+// Following is the node structure
+/**************
+class node{
+public:
+    int data;
+    node * next;
+    node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+***************/
+node* rev_linkedlist_itr(node* head)
+{
+    //write your iterative code here
+    if(head==NULL)
+        return head;
+    
+    node *curr=head;
+    node *prev=NULL;
+    while(curr!=NULL)
+    {
+        node *Next;
+        Next=curr->next;
+        curr->next=prev;
+        prev=curr;  ///
+        curr=Next;   ///
+        
+    }
+    return prev;  ///
+}
+
