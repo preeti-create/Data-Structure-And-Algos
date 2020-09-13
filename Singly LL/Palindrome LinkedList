@@ -1,0 +1,95 @@
+/****************************************************************
+ 
+    Following is the class structure of the Node class:
+
+        class Node
+        {
+        public:
+	        int data;
+	        Node *next;
+	        Node(int data)
+	        {
+		        this->data = data;
+		        this->next = NULL;
+	        }
+        };
+
+*****************************************************************/
+
+Node* midpoint_linkedlist(Node *head)
+{
+    // Write your code here
+    
+     if(head==NULL)
+        return head;
+    
+    Node *slow=head;
+    Node *fast=head->next;	// to make sure that if ll is even length then the middle element is correctly found
+    while(fast!=NULL && fast->next !=NULL) // && should be used ..
+    {
+        // No need of printing
+        slow=slow->next;
+        fast=fast->next->next;        
+            
+    }
+    // we need to return the node
+    return slow;
+
+
+}
+
+
+
+
+Node* rev_linkedlist_itr(Node *head)
+{
+    //write your iterative code here
+    if(head==NULL || head->next==NULL)
+        return head;
+    
+    Node *curr=head;
+    Node *prev=NULL;
+    while(curr!=NULL)
+    {
+        Node *Next;
+        Next=curr->next;
+        curr->next=prev;
+        prev=curr;  ///
+        curr=Next;   ///
+        
+    }
+    return prev;  ///
+}
+
+
+
+bool isPalindrome(Node *head)
+{
+    if(head==NULL || head->next==NULL)
+        return true;
+    
+    Node *temp=head;
+    int count=0;
+    while(temp!=NULL)
+    {
+        temp=temp->next;
+        count++;
+    }
+    Node *mid= midpoint_linkedlist(head);
+    Node *t= rev_linkedlist_itr(mid);
+    
+    while(count>=0 || head!=NULL || head->next!=NULL)
+    {
+        if(head->data!=t->data)
+            return false;
+        else
+        {
+            head=head->next;
+            t=t->next;
+        }
+        
+        count--;
+    }
+    //Write your code here
+    return true;
+}
