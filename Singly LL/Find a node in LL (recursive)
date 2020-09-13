@@ -1,0 +1,32 @@
+/**********
+ * Following is the Node class that is already written.
+ 
+class Node{
+public:
+    int data;
+    Node *next;
+    Node(int data){
+        this -> data = data;
+        this -> next = NULL;
+    }
+};
+ 
+*********/
+
+int indexOfNRecursive(Node *head, int n) {
+   
+    if(n==0 && head==NULL)
+        return -1;
+    int count=0;
+    while(head!=NULL)
+    {
+        if(head->data==n)
+            return count;
+        else
+            count++;
+        head=head->next;
+    }
+    return -1;
+}
+
+
