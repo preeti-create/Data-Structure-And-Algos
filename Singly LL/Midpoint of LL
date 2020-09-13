@@ -1,0 +1,35 @@
+// Following is the node structure
+/**************
+class node{
+public:
+    int data;
+    node * next;
+    node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+***************/
+
+node* midpoint_linkedlist(node *head)
+{
+    // Write your code here
+    
+     if(head==NULL)
+        return head;
+    
+    node *slow=head;
+    node *fast=head->next;	// to make sure that if ll is even length then the middle element is correctly found
+    while(fast!=NULL && fast->next !=NULL) // && should be used ..
+    {
+        // No need of printing
+        slow=slow->next;
+        fast=fast->next->next;        
+            
+    }
+    // we need to return the node
+    return slow;
+
+
+}
+
