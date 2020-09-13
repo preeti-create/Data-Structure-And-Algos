@@ -1,0 +1,184 @@
+Given a linked list, i & j, swap the nodes that are present at i & j position in the LL. You need to swap the entire nodes, not just the data.
+Indexing starts from 0. You don't need to print the elements, just swap and return the head of updated LL.
+Assume i & j given will be within limits. And i can be greater than j also.
+Input format :
+
+Line 1 : Linked list elements (separated by space and terminated by -1)
+
+Line 2 : i and j (separated by space)
+
+Sample Input 1 :
+3 4 5 2 6 1 9 -1
+3 4
+Sample Output 1 :
+3 4 5 6 2 1 9
+
+
+
+
+
+
+//head is head of your linked list, i and j are indexes to be swapped
+// Following is the node structure
+/**************
+class node{
+public:
+    int data;
+    node * next;
+    node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+***************/
+/*node* swap_nodes(node *head,int i,int j)
+{
+    //write your code here
+    if(head==NULL )
+        return head;
+    
+
+      //  return head;
+    
+    node *p=head;
+    node *prev=NULL;
+    int x=0,y=0;
+    
+    if(i==0 || j==0)
+    {
+      return p;  
+    }
+/*
+    if(i==0 || j==0 || i-j==1 || j-i==1)
+    {
+    
+    }
+    */
+    
+   /* while(p!=NULL && x<i)
+    {
+        prev=p;
+        p=p->next;
+        x++;
+    }
+    node *Xp=p;
+    node *Xprev=prev;
+    
+    p=head;
+    prev=NULL;
+    while(p!=NULL && y<j)
+    {
+        prev=p;
+        p=p->next;
+        y++;
+    }
+    
+    node *Yp=p;
+    node *Yprev = prev;
+    
+    Xprev->next=Yp;
+    Yprev->next=Xp;
+    node *a=Yp->next;
+    node *b=Xp->next;
+    Yp->next=b;
+    Xp->next=a;
+    
+return head;
+}
+*/
+
+
+
+//head is head of your linked list, i and j are indexes to be swapped
+// Following is the node structure
+/**************
+class node{
+public:
+    int data;
+    node * next;
+    node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+***************/
+node* swap_nodes(node *head,int i,int j)
+{
+    //write your code here
+    
+
+    node *temp = head, *prev = NULL;
+
+    node *node1 = NULL, *node2 = NULL, *node1_prev = NULL, *node2_prev = NULL;
+
+    int pos = 0;
+
+    while(temp != NULL) {
+
+        if(pos == i) {
+
+            node1_prev = prev;
+
+            node1 = temp;
+
+        }
+
+        else if(pos == j) {
+
+            node2_prev = prev;
+
+            node2 = temp;
+
+        }
+
+        prev = temp;
+
+        temp = temp -> next;
+
+        pos++;
+
+    }
+
+
+
+    if(node1_prev != NULL) {
+
+        node1_prev -> next = node2;
+
+    }
+
+    else {
+
+        head = node2;
+
+    }
+
+
+
+    if(node2_prev != NULL) {
+
+        node2_prev -> next = node1;
+
+    }
+
+    else {
+
+        head = node1;
+
+    }
+
+
+
+    node *temp1 = node2 -> next;
+
+    node2 -> next = node1 -> next;
+
+    node1 -> next = temp1;
+
+
+
+    return head;
+
+}
+
+
