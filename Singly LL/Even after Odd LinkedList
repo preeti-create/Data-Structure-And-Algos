@@ -1,0 +1,123 @@
+// Following is the node structure
+/**************
+class node{
+public:
+    int data;
+    node * next;
+    node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+***************/
+
+node* arrange_LinkedList(node* head)
+{
+    node *oh=NULL;
+    node *ot=NULL;
+    node *eh=NULL;
+    node *et=NULL;
+   node *temp=head;
+   if(head==NULL || head->next==NULL)
+       return head;
+    
+    
+    while(temp!=NULL)
+        
+    {
+       if((oh==NULL && ot==NULL) && (temp->data)%2!=0)     
+       {
+       oh=ot=temp;
+       temp=temp->next;     
+       }
+         
+       if((eh==NULL && et==NULL) && (temp->data)%2==0)
+        {
+            eh=et=temp;
+             temp=temp->next;
+        }
+        if((temp->data)%2 !=0)
+        {
+            ot->next=temp;
+            ot=temp;
+            temp=temp->next;
+           
+        }
+        
+         else
+        {
+            et->next=temp;
+            et=temp;
+            temp=temp->next;
+            //eh->next=et;
+        }
+        
+        
+    }
+    if(oh==NULL)
+        return eh;
+    if(eh==NULL)
+        return oh;
+    
+   ot->next=NULL;
+    et->next=NULL;
+    ot->next=eh;
+    
+    return oh;
+    
+    //write your code here
+}
+
+
+/*
+node* arrange_LinkedList(node* head)
+{
+    node* evenhead=NULL;
+    node* eventail=NULL;
+    node* oddhead=NULL;
+    node* oddtail=NULL;
+    node* temp=head;
+    while(temp!=NULL)
+    {
+        if(temp->data%2!=0)
+        {
+         if(oddhead==NULL)
+         {
+             oddhead=temp;
+             oddtail=temp;
+         }   else
+         {
+             oddtail->next=temp;
+             oddtail=temp;
+         }
+        }
+        else
+        {
+            if(evenhead==NULL)
+         {
+             evenhead=temp;
+             eventail=temp;
+         }   else
+         {
+             eventail->next=temp;
+             eventail=temp;
+         }
+            
+        }temp=temp->next;
+    }
+    if(oddtail!=NULL)
+    {
+        oddtail->next=evenhead;
+        return oddhead;
+    }   
+    if(eventail!=NULL)
+    {
+        return evenhead;
+        
+    }
+
+    
+    
+    //write your code here
+}
+*/
