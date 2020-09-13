@@ -1,0 +1,63 @@
+Sort a given linked list using Bubble Sort (iteratively). While sorting, you need to swap the entire nodes, not just the data.
+You don't need to print the elements, just sort the elements and return the head of updated LL.
+Input format : Linked list elements (separated by space and terminated by -1)`
+
+Sample Input 1 :
+1 4 5 2 -1
+Sample Output 1 :
+1 2 4 5
+
+
+
+
+
+
+
+//head is the head of the linked list
+// Following is the node structure
+/**************
+class node{
+public:
+    int data;
+    node * next;
+    node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+***************/
+node* bubble_sort_LinkedList_itr(node* list)
+{
+    //write your code here
+    node *sorted_list = list;
+	node *temp;
+	for (node *i=sorted_list; i!=NULL; i=i->next)
+	{
+		node *prev = NULL;
+		for (node *j=sorted_list; j->next!=NULL; j=j->next)
+		{
+			if (j->data > j->next->data)
+			{
+				//swap
+				temp = j->next;
+				if (prev)
+					prev->next = temp;
+				else
+				{
+					//There is a new head of list
+					sorted_list = temp;
+					i = temp;
+				}
+
+				j->next = temp->next;
+				temp->next=j;
+
+				j=temp; //set back j iterator since a swap was done;
+			}
+			prev = j; //advance the prev ptr
+		}
+	}
+	return sorted_list;
+
+	
+}
