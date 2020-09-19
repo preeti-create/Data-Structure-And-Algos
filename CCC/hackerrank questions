@@ -1,0 +1,603 @@
+02x03 - The MaxMin Card Game
+
+This card game begins with an empty deck.
+
+There are following types of operations in the game :
+Add X : Add a card with number X onto the top of the deck pile.
+Remove : Remove the TopMost card from the deck pile.
+CallMin : Find the minimum numbered card from the deck pile.
+CallMax : Find the maximum numbered card from the deck pile.
+
+You are given a sequence of operations of the game and your task is to write a program to play the game.
+
+NOTE : You are expected to use the stack data structure only to get optimal solution. Other solutions may not be efficient enough.
+
+INPUT
+
+First line contains N the number of operations.
+Next N lines each contain one operation each : "Add X", "Remove", "CallMax" or "CallMin" where X can be any non-negative integer.
+
+OUTPUT
+
+Output the minimum element whenever CallMin command is given, the maximum element whenever CallMax command is given, or "Invalid" whenever CallMin/CallMax/Remove command is given on an empty stack.
+
+Sample Input 0
+
+15
+Add 1
+Add 2
+Add 3
+CallMin
+CallMax
+Add 0
+CallMin
+CallMax
+Remove
+Remove
+CallMin
+Remove
+Remove
+Remove
+CallMax
+Sample Output 0
+
+1
+3
+0
+3
+1
+Invalid
+Invalid
+
+
+
+
+
+
+
+
+
+
+
+02x04 Captain Tsubasa and his Fest
+Problem
+Submissions
+Discussions
+The very famous captain Oozora Tsubasa of football club Nankatsu FC decided to popularize football in Japan by organizing a football fest. The fest had many events for different sections of people.
+For the awesome coders of CCC, there was an event called PASS and BACK.
+In this event, the coders were given N passes and players having ids between 1 and 1000000.
+Initially some player with a given id had the ball in his possession. The coders had to make a program to display the id of the player who possessed the ball after exactly N passes.
+
+Description of the passes:
+There were two kinds of passes:
+1. P ID
+2. B
+
+Explanation :
+
+For the first kind of pass, the player in possession of the ball passes the ball to player with id = ID while for the second kind of a pass, the player in possession of the ball passes the ball back to the player who had passed the ball to him.
+
+NOTE:
+
+It is guaranteed that the given order of all the passes will be a valid order .
+
+Input Format
+
+The first line of the input contains the number of test cases. For each test case, two space separated integers N and ID ( of the player possessing the ball in the very beginning).
+N lines follow describing the passes. ( for description of the passes, refer the statement above. )
+
+Constraints
+
+1≤T≤100
+1≤N≤100000
+1≤ID≤1000000
+
+Output Format
+
+Output to each test case should be a single line containing the "Player" ID (quotes for clarity) of the player who possesses the ball after N passes.
+
+Sample Input 0
+
+1
+10 23
+P 86
+P 63
+P 60
+B
+P 47
+B
+P 99
+P 9
+B
+B
+Sample Output 0
+
+Player 9
+Explanation 0
+
+Initially, Player having id=23 posses ball. After pass 1, Player having id=86 posses ball. After pass 2, Player having id=63 posses ball. After pass 3, Player having id=60 posses ball. After pass 4, Player having id=63 posses ball. After pass 5, Player having id=47 posses ball. After pass 6, Player having id=63 posses ball. After pass 7, Player having id=99 posses ball. After pass 8, Player having id=9 posses ball. After pass 9, Player having id=99 posses ball. After pass 10, Player having id=9 posses ball.
+
+
+
+
+
+
+
+O M01 - Looped List
+Problem
+Submissions
+Discussions
+You are not allowed to make any changes to the code other than the find_loop function body.
+
+In the function, you will be given a head node to a linked list.
+
+Two types of linked lists are :
+Terminating Lists :
+
+1 -> 2 -> 7 -> 8 -> 9 -> NULL
+Non-Terminating Lists(Loop in the list) :
+
+1 -> 2 -> 5 -> 15 -> 7--------
+	 ^	 	     |
+	 |                   |
+	 ---- 3 <- 10 <- 9<--
+In the second type of list, you can traverse forever and never reach the end.
+
+Modify the find_loop function so that given the head of the linked list, it returns 1 if the list has a loop and 0 otherwise.
+
+Your code's memory consumption must not be dependant on the size of the linked list.
+
+Input Format
+
+Not Needed
+
+Constraints
+
+None
+
+Output Format
+
+Not Needed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O M02 - Comparing Two Linked Lists
+Problem
+Submissions
+Discussions
+You’re given the pointer to the head nodes of two linked lists. Compare the data in the nodes of the linked lists to check if they are equal. The lists are equal only if they have the same number of nodes and corresponding nodes contain the same data. Either head pointer given may be null meaning that the corresponding list is empty.
+
+Input Format
+
+You have to complete the int CompareLists(LinkedListNode* headA, LinkedListNode* headB) method which takes two arguments - the heads of the two linked lists to compare. You should NOT read any input from stdin/console.
+
+Output Format
+
+Compare the two linked lists and return 1 if the lists are equal. Otherwise, return 0. Do NOT print anything to stdout/console.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DLL03 - Disintegrate a Doubly Linked List
+Problem
+Submissions
+Discussions
+You are given a doubly linked list and an integer k. Your task is to use the linkedlist and the value k to construct a new linked list as follows :
+
+Firstly, the prefix of the linkedlist before the element k must appear in reverse order
+Then, the suffix of the linkedlist after the element k must appear in forward order
+Look at the following examples :
+
+List : 1<==>2<==>3<==>4<==>5<==>6<==>7<==>8 with K = 4
+Answer : 3<==>2<==>1<==>5<==>6<==>7<==>8
+
+List : 1<==>5<==>10<==>25<==>10<==>5<==>1 with K = 25
+Answer : 10<==>5<==>1<==>10<==>5<==>1
+The following is the structure of a linkedlist node :
+
+struct DoubleLinkedListNode {
+    int val;
+    DoubleLinkedListNode* prev;
+    DoubleLinkedListNode* next;
+};
+Your task is to implement the following function :
+
+LinkedListNode* disintegrate(LinkedListNode* head, int k)
+Input
+Not Needed
+
+Output
+Not Needed
+
+Instructions
+You are only allowed to edit the Body of the code
+The Head and the Tail of the code must remain as it is
+You are not responsible for taking any input/output
+You must write the function with names exactly as given above
+You must not create any global variables
+Sample Input 0
+
+8
+1
+2
+3
+4
+5
+6
+7
+8
+4
+Sample Output 0
+
+3
+2
+1
+5
+6
+7
+8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+02x09 - Postfix Expression Evaluation
+Problem
+Submissions
+Discussions
+A postfix expression is of the form instead of the traditional infix expression which follows the form .
+
+Your task is to write a program that takes advantage of the stack data structure and calculates the value of a given postfix expression.
+
+INPUT
+
+First line contains one string denoting the postfix expression.
+Second line contains space separated integers, each integer denotes the value of a variable, where the first integer denotes the value of the 'A', second integer denotes the value of 'B' and so on.
+It is guaranteed that there will be as many integers on second line as there are distinct variables in the postfix expression and that they will be the initial characters of the capital letter alphabet.
+
+Look at the sample Input/Output for clarity
+
+OUTPUT
+
+Output one number denoting the final value of the expression.
+
+Sample Input 0
+
+AB+
+3 7
+Sample Output 0
+
+10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+02x10 - Infix to Postfix
+Problem
+Submissions
+Discussions
+A postfix expression is of the form instead of the traditional infix expression which follows the form .
+
+Your task is to write a program that takes advantage of the stack data structure and converts a given infix expression into its postfix expression.
+
+INPUT
+
+There will be only a single line of input, the string that denotes the infix expression to be converted into its postfix counterpart.
+
+There are four arithmetic operations and capital letters used as variables/operands.
+
+Look at the sample Input/Output for clarity
+
+OUTPUT
+
+Output the final postfix expression after converting it to postfix from infix.
+
+Sample Input 0
+
+A+B
+Sample Output 0
+
+AB+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O 11 - LL02 - Linked List Deletions
+Problem
+Submissions
+Discussions
+You will be implementing functions to delete nodes from a linkedlist.
+
+You will have to copy the part for inserting nodes from the previous problem
+
+The following is the structure of the linked list node :
+
+struct LinkedListNode {
+	int val;
+    struct LinkedListNode* next;
+};
+typedef struct LinkedListNode LinkedListNode;
+Additionally, here are the details of the functions that you are expected to implement :
+
+LinkedListNode* deleteAtBeginning(LinkedListNode* head)
+/* 
+ * Deletes the node at the beginning of the linked list and
+ * returns a pointer to the head of the new linked list.
+ * returns NULL if head is NULL
+ */
+ 
+LinkedListNode* deleteAtEnd(LinkedListNode* head)
+/*
+ * Deletes the node at the end of the linked list and
+ * returns a pointer to the head of the new list
+ * returns NULL if no last node present
+ */
+ 
+LinkedListNode* deleteAtPosition(LinkedListNode* head, int pos)
+/*
+ * Deletes the node at "pos" position of the linked list
+ * "pos" = 1 indicates delete the first node
+ * return the head of the original linked list if "pos" is invalid
+ * Must return a pointer to the head of the new list after deletion
+ */
+Input
+Not Needed
+
+Output
+Not Needed
+
+Instructions
+You are only allowed to edit the Body of the code
+The Head and the Tail of the code must remain as it is
+You are not responsible for taking any input/output
+You must write the function with names exactly as given above
+You must not create any global variables
+Sample Input 0
+
+10 10
+Sample Output 0
+
+correct
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+N M04 - Harry Potter and the Chamber of Secrets
+Problem
+Submissions
+Discussions
+Harry is exploring the chamber of secrets to find his best friend Ron's sister Ginny. Harry realises that the chamber of secrets is like a singly linked list.
+
+Walking forward in the chamber of secrets is comparable to iterating to the next element in a linked list.
+
+Harry feels like he has been walking for a while now and wonders if this chamber of secrets ever ends or if he will continue to walk forever.
+
+Formally, write a function that takes as input the head node of a linked list and returns True if the list has a cycle and False if the list terminates.
+
+
+
+
+
+
+
+
+
+
+
+N D03 - Residue of Execution
+Problem
+Submissions
+Discussions
+There are n people standing in a circle waiting to be executed. The counting out begins at some point in the circle and proceeds around the circle in a fixed direction. In each step, a certain number of people are skipped and the next person is executed. The elimination proceeds around the circle (which is becoming smaller and smaller as the executed people are removed), until only the last person remains, who is given freedom. Given the total number of persons n and a number k which indicates that k-1 persons are skipped and kth person is killed in circle. The task is to choose the place in the initial circle so that you are the last one remaining and so survive.
+
+For example, if n = 5 and k = 2, then the safe position is 3. Firstly, the person at position 2 is killed, then person at position 4 is killed, then person at position 1 is killed. Finally, the person at position 5 is killed. So the person at position 3 survives.
+
+If n = 7 and k = 3, then the safe position is 4. The persons at positions 3, 6, 2, 7, 5, 1 are killed in order, and person at position 4 survives.
+
+INPUT
+Only to integers, N and K.
+
+OUTPUT
+One integer, the position that you must occupy in the beginning to avoid getting killed.
+
+CONSTRAINTS
+1 ≤ N, K ≤ 105
+
+Sample Input 0
+
+5 2
+Sample Output 0
+
+3
+Sample Input 1
+
+7 3
+Sample Output 1
+
+4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O M03 - Merge Routine on Sorted Linked Lists
+Problem
+Submissions
+Discussions
+You’re given the pointer to the head nodes of two sorted linked lists. The data in both lists will be sorted in ascending order. Change the next pointers to obtain a single, merged linked list which also has data in ascending order. Either head pointer given may be null meaning that the corresponding list is empty.
+
+Input Format
+
+You have to complete the LinkedListNode* MergeLists(LinkedListNode* headA, LinkedListNode* headB) method which takes two arguments - the heads of the two sorted linked lists to merge. You should NOT read any input from stdin/console.
+
+Output Format
+
+Change the next pointer of individual nodes so that nodes from both lists are merged into a single list. Then return the head of this merged list. Do NOT print anything to stdout/console.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O M2 - LL05 - Concatenating Two Linked Lists
+Problem
+Submissions
+Discussions
+You will be implementing functions to concatenate two linked lists.
+
+The following is the structure of the linked list node :
+
+struct LinkedListNode {
+	int val;
+    struct LinkedListNode* next;
+};
+typedef struct LinkedListNode LinkedListNode;
+Here are the details of the functions that you are expected to implement :
+
+LinkedListNode* concat(LinkedListNode* node1, LinkedListNode* node2)
+/* 
+ * This function returns the head pointer to a linked list that is the result of
+ * appending the larger linked list at the end of the smaller linked list.
+ * A linked list is larger that the other if it has more elements.
+ * If both linked lists have same size then append list with node2
+ * at the end of the list with node1
+ */
+Input
+Not Needed
+
+Output
+Not Needed
+
+Instructions
+You are only allowed to edit the Body of the code
+The Head and the Tail of the code must remain as it is
+You are not responsible for taking any input/output
+You must write the function with names exactly as given above
+You must not create any global variables
+Sample Input 0
+
+3
+1
+2
+3
+2
+4
+5
+Sample Output 0
+
+4
+5
+1
+2
+3
+
