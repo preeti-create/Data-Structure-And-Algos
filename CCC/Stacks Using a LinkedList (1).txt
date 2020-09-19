@@ -1,0 +1,97 @@
+//HEAD
+#include<iostream>
+#include "stdio.h"
+#include "string.h"
+#include "stdlib.h"
+#include "math.h"
+using namespace std;
+//BODY
+
+struct stackNode{
+    int val;
+    struct stackNode* next;
+};
+typedef struct stackNode stackNode;
+stackNode* stackHead;// - Head Pointer for stack LinkedList
+void push(int x)
+{   struct stackNode* temp;  
+    temp = new stackNode();  
+    if (!temp) 
+    {  
+        cout << "\nOverflow";  
+        exit(1);  
+    }    
+    temp->val=x;  
+    temp->next=stackHead;  
+    stackHead=temp; 
+}// - Insert an element onto the top of the stack
+int empty(){
+    return stackHead==NULL;  
+}
+int peek(){
+    if (!empty())  
+        return stackHead->val;  
+    else
+        exit(1);
+}//- Returns the topmost element on the stack
+void pop(){
+    struct stackNode* temp;  
+  
+    if (stackHead==NULL)  
+    {  
+        cout << "\nUnderflow" << endl;  
+        exit(1);  
+    }  
+    else
+    {   temp=stackHead;  
+       stackHead=stackHead->next;  
+        temp->next= NULL;  
+        free(temp);  
+    }  
+}// - Removes an element from the top of the stack
+// - Returns 1 if the stack is empty and 0 otherwise
+
+//TAIL
+
+int main()
+{
+    int n;
+    stackHead = NULL;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        int t, x;
+        scanf("%d", &t);
+        if (t == 1) {
+            scanf("%d", &x);
+            push(x);
+        }
+        else if (t == 2) {
+            if (empty()) {
+                printf("Invalid\n");
+            }
+            else {
+                pop();
+            }
+        }
+        else if (t == 3){
+            if (empty()) {
+                printf("Invalid\n");
+                continue;
+            }
+            stackNode* j = stackHead;
+            while (j) {
+                printf("%d ", j->val);
+                j = j->next;
+            }
+            printf("\n");
+        }
+        else {
+            if (empty()) {
+                printf("Invalid\n");
+                continue;
+            }
+            printf("%d\n", peek());
+        }
+    }
+    return 0;
+}

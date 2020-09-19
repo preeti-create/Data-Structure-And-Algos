@@ -1,0 +1,17 @@
+n=int(input())
+a=[]
+while(n>0):
+    z=input().split()    
+    if "Add" in z[0]:
+        a.append(int(z[1]))
+    if len(a)>0:
+        if "Min" in z[0]:
+            print(min(a))
+        elif 'Max' in z[0]:
+            print(max(a))
+        elif "Remove" in z[0]:
+            a=a[:len(a)-1]
+    else:
+        print("Invalid")
+
+    n-=1

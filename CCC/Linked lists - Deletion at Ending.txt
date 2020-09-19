@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+struct listNode {
+    int val;
+    listNode* next;
+    listNode() : val(0), next(nullptr) {}
+    listNode(int x) : val(x), next(nullptr) {}
+};
+
+// listNode* head = NULL;
+
+void insertNode(listNode** head, int val) {
+    listNode* temp = new listNode(val);
+    listNode* cur = (*head);
+    if((*head)==NULL) {
+        (*head) = temp;
+        return;
+    }
+    while(cur->next) {
+        cur = cur->next;
+    }
+    cur->next = temp;
+}
+
+void reverse(listNode** head) {
+    listNode* prev = NULL;
+    listNode* cur = (*head);
+    while(cur) {
+        listNode* tempNext = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = tempNext;
+    }
+    (*head) = prev;
+}
+
+void deleteNodes(listNode** head, int k) {
+    while(k--) {
+        listNode* temp = (*head);
+        (*head) = (*head)->next;
+        free(temp);
+    }
+}
+
+void printList(listNode** head) {
+    while((*head)->next) {
+        cout<<(*head)->val<<"->";
+        (*head)=(*head)->next;
+    }
+    cout<<(*head)->val;
+}
+
+int main() {
+    int n, val, k;
+    cin>>n;
+    listNode* head = NULL;
+    for(int i=0; i<n; i++) {
+        cin>>val;
+        insertNode(&head, val);
+    }
+    cin>>k;
+    reverse(&head);
+    deleteNodes(&head, k);
+    reverse(&head);
+    printList(&head);
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}

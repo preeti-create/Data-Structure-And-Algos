@@ -1,0 +1,650 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 printing linked list\par
+#include <math.h>\par
+#include <stdio.h>\par
+#include <string.h>\par
+#include <stdlib.h>\par
+#include <assert.h>\par
+#include <limits.h>\par
+#include <stdbool.h>\par
+typedef struct LinkedListNode LinkedListNode;\par
+\par
+struct LinkedListNode \{\par
+    int val;\par
+    LinkedListNode *next;\par
+\};\par
+\par
+LinkedListNode* _insert_node_into_singlylinkedlist(LinkedListNode *head, LinkedListNode *tail, int val) \{\par
+    if(head == NULL) \{\par
+        head = (LinkedListNode *) (malloc(sizeof(LinkedListNode)));\par
+        head->val = val;\par
+        head->next = NULL;\par
+        tail = head;\par
+    \}\par
+    else \{\par
+        LinkedListNode *node = (LinkedListNode *) (malloc(sizeof(LinkedListNode)));\par
+        node->val = val;\par
+        node->next = NULL;\par
+        tail->next = node;\par
+        tail = tail->next;\par
+    \}\par
+    return tail;\par
+\}\par
+\par
+// BODY STARTS HERE\par
+\par
+\par
+/*\par
+ * Complete the function below.\par
+ */\par
+/*\par
+For your reference:\par
+LinkedListNode \{\par
+    int val;\par
+    LinkedListNode *next;\par
+\};\par
+*/\par
+void print(LinkedListNode* head) \par
+\{\par
+    LinkedListNode* temp = head;\par
+    \par
+    while(temp)\par
+    \{\par
+        printf("%d\\n",temp->val);\par
+        temp = temp->next;\par
+    \}\par
+\}\par
+\par
+//BODY ENDS HERE\par
+\par
+int main()\par
+\{\par
+    int head_size = 0;\par
+\par
+    LinkedListNode* head = NULL;\par
+    LinkedListNode* head_tail = NULL;\par
+\par
+    scanf("%d\\n", &head_size);\par
+    for(int i = 0; i < head_size; i++) \{\par
+        int head_item;\par
+        scanf("%d", &head_item);\par
+        head_tail = _insert_node_into_singlylinkedlist(head, head_tail, head_item);\par
+\par
+        if(i == 0) \{\par
+            head = head_tail;\par
+        \}\par
+    \}\par
+\par
+\par
+    print(head);\par
+    \par
+    return 0;\par
+\}\par
+linked list in reverse\par
+#include <math.h>\par
+#include <stdio.h>\par
+#include <string.h>\par
+#include <stdlib.h>\par
+#include <assert.h>\par
+#include <limits.h>\par
+#include <stdbool.h>\par
+typedef struct LinkedListNode LinkedListNode;\par
+\par
+struct LinkedListNode \{\par
+    int val;\par
+    LinkedListNode *next;\par
+\};\par
+\par
+LinkedListNode* _insert_node_into_singlylinkedlist(LinkedListNode *head, LinkedListNode *tail, int val) \{\par
+    if(head == NULL) \{\par
+        head = (LinkedListNode *) (malloc(sizeof(LinkedListNode)));\par
+        head->val = val;\par
+        head->next = NULL;\par
+        tail = head;\par
+    \}\par
+    else \{\par
+        LinkedListNode *node = (LinkedListNode *) (malloc(sizeof(LinkedListNode)));\par
+        node->val = val;\par
+        node->next = NULL;\par
+        tail->next = node;\par
+        tail = tail->next;\par
+    \}\par
+    return tail;\par
+\}\par
+\par
+//BODY STARTS HERE\par
+\par
+\par
+/*\par
+ * Complete the function below.\par
+ */\par
+/*\par
+For your reference:\par
+LinkedListNode \{\par
+    int val;\par
+    LinkedListNode *next;\par
+\};\par
+*/\par
+void ReversePrint(LinkedListNode* head) \par
+\{\par
+    LinkedListNode* cur = head;\par
+    LinkedListNode* prev = NULL;\par
+    LinkedListNode* nex = NULL;\par
+    \par
+    while(cur)\par
+    \{\par
+        nex = cur->next;\par
+        cur->next = prev;\par
+        prev = cur;\par
+        cur = nex;        \par
+    \}\par
+    \par
+    LinkedListNode* temp = prev;\par
+    \par
+    while(temp)\par
+    \{\par
+        printf("%d ",temp->val);\par
+        temp = temp->next;\par
+    \}\par
+    \par
+    return;\par
+\}\par
+\par
+\par
+//BODY ENDS HERE\par
+\par
+int main()\par
+\{\par
+    int head_size = 0;\par
+\par
+    LinkedListNode* head = NULL;\par
+    LinkedListNode* head_tail = NULL;\par
+\par
+    scanf("%d\\n", &head_size);\par
+    for(int i = 0; i < head_size; i++) \{\par
+        int head_item;\par
+        scanf("%d", &head_item);\par
+        head_tail = _insert_node_into_singlylinkedlist(head, head_tail, head_item);\par
+\par
+        if(i == 0) \{\par
+            head = head_tail;\par
+        \}\par
+    \}\par
+\par
+\par
+    ReversePrint(head);\par
+    \par
+    return 0;\par
+\}\par
+insertion at any position\par
+#include <stdio.h>\par
+#include <string.h>\par
+#include <math.h>\par
+#include <stdlib.h>\par
+\par
+struct node\{\par
+    struct node* next;\par
+    int val;\par
+\};\par
+\par
+struct node* link(struct node* head, int pos, int data)\par
+\{\par
+    struct node* temp = head;\par
+    \par
+    struct node* nnode = (struct node*)malloc(sizeof(struct node));\par
+    nnode->val = data;\par
+    \par
+    if(pos==0)\par
+    \{\par
+        nnode->next = temp;\par
+        return nnode;\par
+    \} \par
+        \par
+    pos--;\par
+    \par
+    while(pos--)\par
+    \{\par
+        temp=temp->next;\par
+    \}\par
+    \par
+    nnode->next = temp->next;\par
+    temp->next = nnode;\par
+    \par
+    return head;\par
+\}\par
+\par
+int main() \par
+\{\par
+    int n;\par
+    scanf("%d",&n);\par
+    \par
+    int pos; scanf("%d",&pos);\par
+    int data; scanf("%d",&data);\par
+    n--;\par
+    \par
+    struct node* head = (struct node*)malloc(sizeof(struct node));\par
+    head->val = data;\par
+    head->next = NULL;\par
+    \par
+    while(n--)\par
+    \{\par
+        scanf("%d",&pos);\par
+        scanf("%d",&data);\par
+        head = link(head,pos,data);\par
+    \}\par
+    \par
+    while(head->next)\par
+    \{\par
+        printf("%d->",head->val);\par
+        head=head->next;\par
+    \}\par
+     \par
+    printf("%d",head->val);\par
+    \par
+    return 0;\par
+\}\par
+insertion at the begining\par
+#include <stdio.h>\par
+#include <string.h>\par
+#include <math.h>\par
+#include <stdlib.h>\par
+typedef struct node node;\par
+\par
+struct node\{\par
+    node* next;\par
+    int val;\par
+\};\par
+\par
+int main() \par
+\{\par
+    int n;\par
+    scanf("%d",&n);\par
+    \par
+    node* nex = NULL;\par
+    node* head = NULL;\par
+    \par
+    while(n--)\par
+    \{\par
+        head = (node*)malloc(sizeof(node));\par
+        scanf("%d",&head->val);\par
+        head->next = nex;\par
+        nex = head;\par
+    \}\par
+    \par
+    while(head->next)\par
+    \{\par
+        printf("%d->",head->val);\par
+        head = head->next;\par
+    \}\par
+    \par
+    printf("%d",head->val);\par
+    \par
+    return 0;\par
+\}\par
+deletion at beg.\par
+#include<bits/stdc++.h>\par
+using namespace std;\par
+\par
+struct node\{\par
+    int val;\par
+    struct node* next;\par
+\};\par
+\par
+int main() \par
+\{\par
+    int n; cin>>n;\par
+    \par
+    struct node* start = new node();\par
+    cin>>start->val;\par
+    start->next = NULL;\par
+    \par
+    struct node* head = start;\par
+    \par
+    n--;\par
+    \par
+    while(n--)\par
+    \{\par
+        struct node* nnode = new node();\par
+        cin>>nnode->val;\par
+        start->next = nnode;\par
+        start = nnode;\par
+    \}\par
+    \par
+    start->next = NULL;\par
+    \par
+    int del; cin>>del;\par
+    \par
+    while(del--)\par
+        head = head->next;\par
+    \par
+    while(head->next)\par
+    \{\par
+        cout<<head->val<<"->";\par
+        head=head->next;\par
+    \}\par
+    \par
+    cout<<head->val;    \par
+    \par
+    return 0;\par
+\}\par
+deletion at any pos.\par
+#include<bits/stdc++.h>\par
+using namespace std;\par
+\par
+struct node\{\par
+    int val;\par
+    struct node* next;\par
+\};\par
+\par
+int main() \par
+\{\par
+    int n; cin>>n;\par
+    \par
+    struct node* start = new node();\par
+    cin>>start->val;\par
+    start->next = NULL;\par
+    \par
+    struct node* head = start;\par
+    \par
+    n--;\par
+    \par
+    while(n--)\par
+    \{\par
+        struct node* nnode = new node();\par
+        cin>>nnode->val;\par
+        start->next = nnode;\par
+        start = nnode;\par
+    \}\par
+    \par
+    start->next = NULL;\par
+    \par
+    int pos; cin>>pos;\par
+    pos--;\par
+    \par
+    struct node* temp = head;\par
+    \par
+    while(pos--)\par
+        temp = temp->next;\par
+    \par
+    temp->next = temp->next->next;\par
+    \par
+    while(head->next)\par
+    \{\par
+        cout<<head->val<<"->";\par
+        head = head->next;\par
+    \}\par
+    \par
+    cout<<head->val;\par
+    \par
+    return 0;\par
+\}\par
+del. at ending\par
+#include<bits/stdc++.h>\par
+using namespace std;\par
+\par
+struct node\{\par
+    int val;\par
+    struct node* next;\par
+\};\par
+\par
+int main() \par
+\{\par
+    int n; cin>>n;\par
+    \par
+    struct node* start = new node();\par
+    cin>>start->val;\par
+    start->next = NULL;\par
+    \par
+    struct node* head = start;\par
+    \par
+    n--;\par
+    \par
+    while(n--)\par
+    \{\par
+        struct node* nnode = new node();\par
+        cin>>nnode->val;\par
+        start->next = nnode;\par
+        start = nnode;\par
+    \}\par
+    \par
+    start->next = NULL;\par
+    \par
+    int num; cin>>num;\par
+    \par
+    struct node* slow = head;\par
+    struct node* fast = head;\par
+    \par
+    while(num--)\par
+        fast = fast->next;\par
+    \par
+    while(fast->next)\par
+    \{\par
+        slow = slow->next;\par
+        fast = fast->next;\par
+    \}\par
+    \par
+    slow->next = NULL;\par
+    \par
+    while(head->next)\par
+    \{\par
+        cout<<head->val<<"->";\par
+        head = head->next;\par
+    \}\par
+    \par
+    cout<<head->val;\par
+    \par
+    return 0;\par
+\}\par
+del. at ending\par
+#include<bits/stdc++.h>\par
+using namespace std;\par
+\par
+struct node\{\par
+    int val;\par
+    struct node* next;\par
+\};\par
+\par
+int main() \par
+\{\par
+    int n; cin>>n;\par
+    \par
+    struct node* start = new node();\par
+    cin>>start->val;\par
+    start->next = NULL;\par
+    \par
+    struct node* head = start;\par
+    \par
+    n--;\par
+    \par
+    while(n--)\par
+    \{\par
+        struct node* nnode = new node();\par
+        cin>>nnode->val;\par
+        start->next = nnode;\par
+        start = nnode;\par
+    \}\par
+    \par
+    start->next = NULL;\par
+    \par
+    int num; cin>>num;\par
+    \par
+    struct node* slow = head;\par
+    struct node* fast = head;\par
+    \par
+    while(num--)\par
+        fast = fast->next;\par
+    \par
+    while(fast->next)\par
+    \{\par
+        slow = slow->next;\par
+        fast = fast->next;\par
+    \}\par
+    \par
+    slow->next = NULL;\par
+    \par
+    while(head->next)\par
+    \{\par
+        cout<<head->val<<"->";\par
+        head = head->next;\par
+    \}\par
+    \par
+    cout<<head->val;\par
+    \par
+    return 0;\par
+\}\par
+LL,searching\par
+#include<bits/stdc++.h>\par
+using namespace std;\par
+\par
+struct node\{\par
+    int val;\par
+    struct node* next;\par
+\};\par
+\par
+int main() \par
+\{\par
+    int n; cin>>n;\par
+    \par
+    struct node* start = new node();\par
+    cin>>start->val;\par
+    start->next = NULL;\par
+    \par
+    struct node* head = start;\par
+    \par
+    n--;\par
+    \par
+    while(n--)\par
+    \{\par
+        struct node* nnode = new node();\par
+        cin>>nnode->val;\par
+        start->next = nnode;\par
+        start = nnode;\par
+    \}\par
+    \par
+    start->next = NULL;\par
+    \par
+    int value; cin>>value;\par
+    int flag = 0;\par
+    \par
+    while(head)\par
+    \{\par
+        if(head->val==value)\par
+        \{\par
+            cout<<"yes";\par
+            flag=1;\par
+            break;\par
+        \}\par
+        head=head->next;\par
+    \}\par
+    \par
+    if(flag==0)\par
+        cout<<"no";\par
+    \par
+    return 0;\par
+\}\par
+reverse LL\par
+#include <math.h>\par
+#include <stdio.h>\par
+#include <string.h>\par
+#include <stdlib.h>\par
+#include <assert.h>\par
+#include <limits.h>\par
+#include <stdbool.h>\par
+typedef struct LinkedListNode LinkedListNode;\par
+\par
+struct LinkedListNode \{\par
+    int val;\par
+    LinkedListNode *next;\par
+\};\par
+\par
+LinkedListNode* _insert_node_into_singlylinkedlist(LinkedListNode *head, LinkedListNode *tail, int val) \{\par
+    if(head == NULL) \{\par
+        head = (LinkedListNode *) (malloc(sizeof(LinkedListNode)));\par
+        head->val = val;\par
+        head->next = NULL;\par
+        tail = head;\par
+    \}\par
+    else \{\par
+        LinkedListNode *node = (LinkedListNode *) (malloc(sizeof(LinkedListNode)));\par
+        node->val = val;\par
+        node->next = NULL;\par
+        tail->next = node;\par
+        tail = tail->next;\par
+    \}\par
+    return tail;\par
+\}\par
+\par
+//BODY STARTS HERE\par
+\par
+\par
+/*\par
+ * Complete the function below.\par
+ */\par
+/*\par
+For your reference:\par
+LinkedListNode \{\par
+    int val;\par
+    LinkedListNode *next;\par
+\};\par
+*/\par
+LinkedListNode* Reverse(LinkedListNode* head) \par
+\{\par
+    if(!head)\par
+        return NULL;\par
+    \par
+    LinkedListNode* cur = head;\par
+    LinkedListNode* prev = NULL;\par
+    LinkedListNode* nex = NULL;\par
+    \par
+    while(cur)\par
+    \{\par
+        nex = cur->next;\par
+        cur->next = prev;\par
+        prev = cur;\par
+        cur = nex;\par
+    \}\par
+    \par
+    return prev;\par
+\}\par
+\par
+//BODY ENDS HERE\par
+\par
+int main()\par
+\{\par
+    FILE *f = stdout;\par
+    char *output_path = getenv("OUTPUT_PATH");\par
+    if (output_path) \{\par
+        f = fopen(output_path, "w");\par
+    \}\par
+\par
+    LinkedListNode* res;\par
+    int head_size = 0;\par
+\par
+    LinkedListNode* head = NULL;\par
+    LinkedListNode* head_tail = NULL;\par
+\par
+    scanf("%d\\n", &head_size);\par
+    for(int i = 0; i < head_size; i++) \{\par
+        int head_item;\par
+        scanf("%d", &head_item);\par
+        head_tail = _insert_node_into_singlylinkedlist(head, head_tail, head_item);\par
+\par
+        if(i == 0) \{\par
+            head = head_tail;\par
+        \}\par
+    \}\par
+\par
+\par
+    res = Reverse(head);\par
+    while (res != NULL) \{\par
+        fprintf(f, "%d ", res->val);\par
+\par
+        res = res->next;\par
+    \}\par
+\par
+    fclose(f);\par
+    return 0;\par
+\}\par
+}
+ 
