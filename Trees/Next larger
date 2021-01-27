@@ -116,3 +116,120 @@ TreeNode<int>* getNextLargerElement(TreeNode<int>* root, int x) {
     
     return ans;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Appro-2
+
+// Following is the given Tree node structure
+/**************
+
+template <typename T>
+class TreeNode {
+public:
+    T data;
+    vector<TreeNode<T>*> children;
+    
+    TreeNode(T data) {
+        this->data = data;
+    }
+    
+    ~TreeNode() {
+        for (int i = 0; i < children.size(); i++) {
+            delete children[i];
+        }
+    }
+};
+***************/
+/*
+TreeNode<int>* nextLargerElement(TreeNode<int> *root, int n) {
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     
+   // if(root->children.size()==0)
+     //   return root;
+    
+    if(root==NULL)
+        return root;
+    
+    TreeNode<int>* ans=NULL;
+    if(root->data > n)
+    {
+      ans = root; 
+      // return ans;
+    }
+    else
+    {
+       ans = NULL;
+       // return ans;
+    }
+    
+    for(int i=0;i<root->children.size();i++)
+    {
+        TreeNode<int>* temp = nextLargerElement(root->children[i], n);
+        
+        if(ans==NULL)
+            ans=temp;
+        
+        if(temp->data < ans->data)
+            ans=temp;
+    }
+        
+        
+return ans;
+}
+*/
+
+TreeNode<int>* nextLargerElement(TreeNode<int> *root, int n) {
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+   // if(root->children.size()==0)
+     //   return root;
+    
+    if(root==NULL)
+        return root;
+    
+    TreeNode<int>* ans=NULL;
+    if(root->data > n)
+    {
+      ans = root; 
+       //return ans;
+    }
+    else
+    {
+       ans = NULL;
+        //return ans;
+    }
+    
+    for(int i=0;i<root->children.size();i++)
+    {
+        TreeNode<int>* temp = nextLargerElement(root->children[i], n);
+        
+        if(ans==NULL)
+            ans=temp;
+        
+        if(temp!=NULL && temp->data < ans->data)
+            ans=temp;
+    }
+        
+        
+return ans;
+}
+
