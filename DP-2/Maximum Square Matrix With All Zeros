@@ -73,3 +73,104 @@ int findMaxSquareWithAllZeros(int** arr, int row, int col){
     }
     return max_;
 }
+
+
+
+
+//  Approach- 2 using dp
+
+#include<iostream>
+#include<climits>
+using namespace std;
+
+// Dynamic Programming
+int findMaxSquareWithAllZeros(int** arr, int row, int col){
+   /* 
+    int **dp = new int*[row];
+    for(int i=0;i<row;i++)
+        dp[i] = new int[col];
+
+    // dp[i][j] = maximum square with all zeros ending at arr[i][j]
+
+    int max_ = 0;
+    
+    // Fill 1st row
+    for(int j=0;j<col;j++){
+        dp[0][j] = (arr[0][j]==0) ? 1 : 0;
+        if(dp[0][j] > max_)
+            max_ = dp[0][j];
+    }
+    
+    // Fill first col
+    for(int i=1;i<row;i++){
+        dp[i][0] = (arr[i][0]==0) ? 1 : 0;
+        if(dp[i][0] > max_)
+            max_ = dp[i][0];
+    }
+    
+    // Fill remaining and calculate max
+    for(int i=1;i<row;i++){
+        for(int j=1;j<col;j++){
+            if(arr[i][j]==0)
+                dp[i][j] = min( dp[i-1][j-1], min(dp[i-1][j], dp[i][j-1]) ) + 1;
+            else
+                dp[i][j] = 0; // No square possible ending at arr[i][j] bcz arr[i][j] is 1
+            
+            if(dp[i][j] > max_)
+                max_ = dp[i][j];
+        }
+    }
+    return max_;
+    
+    */
+    int **dp=new int*[row];
+    for(int j=0; j<col; j++)
+    {
+        dp[j]= new int[col];
+    }
+    
+    
+    for(int i=0;i<row;i++)
+    {
+        if(arr[i][0]== 0)
+            dp[i][0]= 1;
+        else
+            dp[i][0]= 0;
+        
+    }
+    
+     for(int j=0;j<col;j++)
+    {
+       if(arr[0][j]== 0)
+            dp[0][j]= 1;
+        else
+            dp[0][j]= 0; 
+    }
+    
+    
+    for(int i=1; i< row; i++)
+    {
+        for(int j=1; j<col; j++)
+        {
+            if(arr[i][j]== 1)
+                dp[i][j]=0;
+            else
+            {
+                dp[i][j]= min(dp[i-1][j-1], min(dp[i-1][j], dp[i][j-1])) +1;
+            }
+        }
+    }
+    int max=0;
+    
+    for(int i=0; i< row; i++)
+    {
+        for(int j=0; j<col; j++)
+        {
+            if( dp[i][j] > max )
+                max=dp[i][j];
+        }
+    }
+    
+    return max;
+    
+}
