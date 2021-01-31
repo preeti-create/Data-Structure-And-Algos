@@ -79,6 +79,35 @@ int solve(string s, string v) {
 */
 
 
+ //  Approach- 2 Brute- Force
  
+ #define MAX 1005
+int solve(string s, string v) {
+    // Write your code here
+    if(s.size()==0)
+    {
+        return MAX;
+    }
+    if( v.size()<=0)
+        return 1;
+    
+    int x = solve(s.substr(1) , v);
+    int i=0;
+    for( i=0;i<v.size();i++)
+    {
+       if(v[i]==s[0])
+       { 
+        break;
+       }
+    }
+    if(i==v.size())
+    {
+        return 1;
+    }
+    
+    int y=1+solve(s.substr(1) , v.substr(i+1));
+    return min(x,y);
+
+}
     
     
