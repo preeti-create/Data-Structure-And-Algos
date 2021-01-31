@@ -124,7 +124,7 @@ int findMaxSquareWithAllZeros(int** arr, int row, int col){
     
     */
     int **dp=new int*[row];
-    for(int j=0; j<col; j++)
+    for(int j=0; j<row; j++)
     {
         dp[j]= new int[col];
     }
