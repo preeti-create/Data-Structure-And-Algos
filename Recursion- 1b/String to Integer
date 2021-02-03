@@ -1,0 +1,90 @@
+String to Integer
+Send Feedback
+Write a recursive function to convert a given string into the number it represents. That is input will be a numeric string that contains only numbers, you need to convert the string into corresponding integer and return the answer.
+Input format :
+Numeric string S (string, Eg. "1234")
+Output format :
+Corresponding integer N (int, Eg. 1234)
+Constraints :
+0 <= |S| <= 9
+where |S| represents length of string S.
+Sample Input 1 :
+00001231
+Sample Output 1 :
+1231
+Sample Input 2 :
+12567
+Sample Output 2 :
+12567
+
+
+
+
+/*
+
+#include <cstring>
+#include <cmath>
+//#include <cstdlib>
+int sum=0;
+int stringToNumber(char input[]) {
+    // Write your code here
+    int l=strlen(input);
+    
+    if(strlen(input)==1)
+        return input[0]-48;
+    int b= input[0]-48;
+    
+    
+    //int num=atoi(input);
+    
+   //  int num=input[0];
+   // sum = sum + num*pow(10,l-1);
+   int a= stringToNumber(input+1);
+    
+    return (b*pow(10, l-1) + a);
+ 
+
+}
+
+*/
+#include <cstring>
+#include <cmath>
+//#include <cstdlib>
+/*
+int sum=0;
+int stringToNumber(char input[],int index) {
+    // Write your code here
+    if(index==0){
+        return input[index]-'0';
+    }
+    int small_ans=stringToNumber(input,index-1);
+    int l=input[index]-'0';
+    return small_ans*10+l;
+  
+}
+
+int stringToNumber(char input[])
+{
+    int index=strlen(input)-1;
+    return stringToNumber(input,index);
+}
+*/
+int ans=0;
+
+int stringToNumber(char input[])
+{
+  int l= strlen(input);
+    if(l==0)
+        return 0;
+    
+    ans= stringToNumber(input+1);
+    int c = input[0]- '0';
+    
+    ans = c * pow(10, l-1) + ans ;
+    
+    return ans;
+}
+
+
+
+
