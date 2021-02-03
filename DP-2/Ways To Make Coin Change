@@ -32,3 +32,49 @@ int countWaysToMakeChange(int *denominations, int m, int n)
 //     }
 //     return 0;
 // }
+
+
+
+
+
+
+
+
+
+
+// Appro - 3 Using dp
+
+int countWaysToMakeChange(int d[], int n, int v){
+
+  /*  Don't write main().
+   *  Don't read input, it is passed as function argument.
+   *  Return output and don't print it.
+   *  Taking input and printing output is handled automatically.
+   */
+  int **ans=new int*[n+1];
+    for(int i=0;i<=n;i++)
+        ans[i]=new int[v+1];
+        
+   for(int i=0;i<=n;i++)
+   {
+       ans[i][0]=1;
+   }
+    for(int j=1;j<=v;j++)
+   {
+       ans[0][j]=0;
+   }
+    for(int i=1;i<=n;i++)
+   {
+        for(int j=1;j<=v;j++)
+        {
+            if(d[i-1]>j)
+                ans[i][j]=ans[i-1][j];
+            else
+                ans[i][j]=ans[i-1][j]+ans[i][j-d[i-1]];
+        }
+   }
+    return ans[n][v];
+    
+    
+}
+
